@@ -1,1 +1,3 @@
 # 35-COLLABORATION-SERVER-YES24
+
+35기 합동세미나 yes24 럭키세븐7️⃣
