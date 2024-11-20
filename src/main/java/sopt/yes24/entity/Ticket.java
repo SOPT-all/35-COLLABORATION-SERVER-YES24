@@ -1,8 +1,7 @@
 package sopt.yes24.entity;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "ticket")
@@ -18,7 +17,7 @@ public class Ticket {
     private String area;
 
     @Column
-    private LocalDate date;
+    private Date date;
 
     @Column
     private String img;
@@ -36,7 +35,7 @@ public class Ticket {
 
     }
 
-    public Ticket(Long ticket_id, String title, String area, LocalDate date, String img, String comment, int number_of_likes, boolean like_status) {
+    public Ticket(Long ticket_id, String title, String area, Date date, String img, String comment, int number_of_likes, boolean like_status) {
         this.ticket_id = ticket_id;
         this.title = title;
         this.area = area;
@@ -59,7 +58,7 @@ public class Ticket {
         return area;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
