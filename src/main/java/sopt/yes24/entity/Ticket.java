@@ -1,7 +1,6 @@
 package sopt.yes24.entity;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity

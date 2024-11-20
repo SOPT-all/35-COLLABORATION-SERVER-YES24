@@ -21,5 +21,4 @@ public class TicketService {
                 .map(HotTicketResponse::fromEntity)
                 .collect(Collectors.toList());
     }
-
 }
