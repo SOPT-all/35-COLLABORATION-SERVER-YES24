@@ -10,30 +10,30 @@ public record TicketDetailsResponse(
         TicketDetails concert
 ) {
     public record TicketDetails(
-            String concert_id,
-            String concert_title,
-            String concert_area, 
-            String tconcert_area,
-            String concert_img,
-            String concert_date,
-            String concert_duration,
-            String concert_age,
+            String concertId,
+            String concertTitle,
+            String concertArea,
+            String concertAreaDetail,
+            String concertImg,
+            String concertDate,
+            String concertDuration,
+            String concertAge,
             String hypertext,
             String hyperlink,
             List<String> notice,
-            List<String> performance_times,
-            List<TicketPricing> ticket_pricing
+            List<String> performanceTimes,
+            List<TicketPricing> ticketPricing
     ) {
         public static TicketDetails fromEntity(Ticket ticket, List<String> performanceTimes, List<TicketPricing> ticketPricing) {
             return new TicketDetails(
-                    ticket.ticket_id().toString(),
+                    ticket.getTicketId().toString(),
                     ticket.getTitle(),
-                    ticket.getArea_detail(),
+                    ticket.getAreaDetail(),
                     ticket.getArea(),
                     ticket.getImg(),
                     ticket.getDate().toString(),
                     ticket.getDuration(),
-                    ticket.getAudience_rating(),
+                    ticket.getAudienceRating(),
                     ticket.getHypertext(),
                     ticket.getHyperlink(),
                     Arrays.asList(ticket.getNotice().split("\n")),

@@ -34,7 +34,7 @@ public class TicketController {
     }
 
 
-    //todo 내가 틀만 만들어 놔썽!
+/*    //todo 내가 틀만 만들어 놔썽!
     @GetMapping("/tickets/main")
     public ResponseEntity<MainTicketListResponse> getMainTickets() {
         List<MainTicketResponse> tickets = ticketService.getMainTickets();
@@ -51,7 +51,7 @@ public class TicketController {
     public ResponseEntity<TicketListResponse> getTicketList(@RequestParam String sortBy) {
         List<TicketListResponse> tickets = ticketService.getTicketList(sortBy);
         return ResponseEntity.ok(TicketListResponse.of("Success", tickets));
-    }
+    }*/
 
 
     @PostMapping("/tickets/like/{ticket_id}")

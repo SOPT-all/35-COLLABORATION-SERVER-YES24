@@ -39,7 +39,7 @@ public class TicketService implements TicketServiceIF {
                 .collect(Collectors.toList());
         Ticket ticket = ticketRepository.findById(ticketId)
                 .orElseThrow(() -> new RuntimeException("Ticket not found"));
-        String[] ticketPricing = ticket.getTicket_pricing().split("\n");
+        String[] ticketPricing = ticket.getTicketPricing().split("\n");
         List<TicketPricing> pricingList = new ArrayList<>();
         for (int i = 0; i < ticketPricing.length; i++) {
             String[] parts = ticketPricing[i].split(" ");

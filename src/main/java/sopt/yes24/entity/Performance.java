@@ -10,7 +10,7 @@ public class Performance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "perform_id")
-    private Long perform_id;
+    private Long performId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ticket_id", nullable = false)
@@ -23,14 +23,14 @@ public class Performance {
 
     }
 
-    public Performance(Long perform_id, Ticket ticket, String audienceRating, LocalDate viewingTime) {
-        this.perform_id = perform_id;
+    public Performance(Long performId, Ticket ticket, String audienceRating, LocalDate viewingTime) {
+        this.performId = performId;
         this.ticket = ticket;
         this.viewingTime = viewingTime;
     }
 
     public Long getPerformId() {
-        return perform_id;
+        return performId;
     }
 
     public Ticket getTicket() {
