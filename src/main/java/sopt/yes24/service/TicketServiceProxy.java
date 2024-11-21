@@ -2,6 +2,7 @@ package sopt.yes24.service;
 
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
+import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class TicketServiceProxy implements TicketServiceIF{
     }
 
     @Override
-    public void likeTicket(Long ticketId) {
-
+    public TicketLikeData likeTicket(Long ticketId) {
+        return null;
     }
 }
