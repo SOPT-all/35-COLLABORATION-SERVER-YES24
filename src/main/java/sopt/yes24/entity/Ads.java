@@ -8,25 +8,33 @@ public class Ads {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ads_id;
+    @Column(name = "ads_id")
+    private Long adsId;
 
-    @Column
-    private String ads_img;
+    @Column(name = "ads_img")
+    private String adsImg;
 
     public Ads() {
 
     }
 
-    public Ads(final Long ads_id, final String ads_img) {
-        this.ads_id = ads_id;
-        this.ads_img = ads_img;
+    public Ads(final Long adsId, final String adsImg) {
+        this.adsId = adsId;
+        this.adsImg = adsImg;
     }
 
-    public Long getAds_id() {
-        return ads_id;
+    public Ads(final String adsImg) {
+        this.adsImg = adsImg;
     }
 
-    public String getAds_img() {
-        return ads_img;
+    public Long getAdsId() {
+        return adsId;
+    }
+
+    public String getAdsImg() {
+        return adsImg;
+    }
+    public void setAdsImg(String adsImg) {
+        this.adsImg = adsImg;
     }
 }

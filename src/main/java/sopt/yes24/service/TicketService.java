@@ -1,15 +1,18 @@
 package sopt.yes24.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketPricing;
 import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
+import sopt.yes24.entity.Ads;
 import sopt.yes24.entity.Performance;
 import sopt.yes24.entity.Ticket;
 import sopt.yes24.repository.TicketRepository;
 import sopt.yes24.repository.PerformanceRepository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,8 +22,10 @@ import java.util.stream.Collectors;
 public class TicketService implements TicketServiceIF {
     private final TicketRepository ticketRepository;
     private final PerformanceRepository performanceRepository;
-    
-    public TicketService(TicketRepository ticketRepository, PerformanceRepository performanceRepository) {
+    private final FileStorageService fileStorageService;
+
+    public TicketService(TicketRepository ticketRepository, PerformanceRepository performanceRepository, FileStorageService fileStorageService) {
+        this.fileStorageService = fileStorageService;
         this.ticketRepository = ticketRepository;
         this.performanceRepository = performanceRepository;
     }
@@ -115,5 +120,17 @@ public class TicketService implements TicketServiceIF {
         }
         ticketRepository.save(ticket);
         return TicketLikeData.fromEntity(ticket);
+    }
+
+    public String saveTicketImg(MultipartFile file, String serverUrl) throws IOException {
+        // 파일 저장 및 URL 생성
+        String fileUrl = fileStorageService.storeFile(file);
+
+        // Ticket 엔티티 생성 및 저장
+        Ticket ticket = new Ticket();
+        ticket.setImg(serverUrl + fileUrl);
+        ticketRepository.save(ticket);
+
+        return serverUrl + fileUrl;
     }
 }

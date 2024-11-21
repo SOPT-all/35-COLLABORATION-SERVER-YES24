@@ -76,6 +76,10 @@ public class Ticket {
         this.likeStatus = likeStatus;
     }
 
+    public Ticket(String img) {
+        this.img = img;
+    }
+
     public Long getTicketId() {
         return ticketId;
     }
@@ -155,5 +159,9 @@ public class Ticket {
 
     public void setNumberOfLikes(int i) {
         this.numberOfLikes = i;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
