@@ -23,7 +23,7 @@ public class TicketServiceProxy implements TicketServiceIF{
     }
 
     @Override
-    public List<TicketListResponse> getTicketList(String sortBy) {
+    public List<ConcertResponse> getTicketList(String sortBy) {
         return List.of();
     }
 

@@ -16,4 +16,15 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     // 좋아요 순으로 상위 10개 데이터 가져오기. 단, comment 없고, area 있는 데이터 = MainTicket 즉, Concert Ticket
     @Query("SELECT t FROM Ticket t WHERE t.comment IS NULL AND t.area IS NOT NULL ORDER BY t.numberOfLikes DESC")
     List<Ticket> findTop10ConcertTicketsByLikes();
+    // 인기순: 좋아요 순으로 정렬
+    List<Ticket> findAllByOrderByNumberOfLikesDesc();
+
+    // 평점순
+    List<Ticket> findAllByOrderByRatingDesc();
+
+    // 리뷰 많은 순
+    List<Ticket> findAllByOrderByNumberOfReviewsDesc();
+
+    // 종료 임박순
+    List<Ticket> findAllByOrderByDateAsc();
 }

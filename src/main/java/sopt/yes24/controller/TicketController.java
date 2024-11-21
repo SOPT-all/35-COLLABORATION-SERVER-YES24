@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.*;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
@@ -46,14 +47,19 @@ public class TicketController {
     public ResponseEntity<RankedTicketListResponse> getRankedTickets() {
         List<RankedTicketResponse> tickets = ticketService.getRankedTickets();
         return ResponseEntity.ok(RankedTicketListResponse.of("Success", tickets));
-    }
+    }*/
 
 /*    @GetMapping("/tickets/list")
     public ResponseEntity<TicketListResponse> getTicketList(@RequestParam String sortBy) {
         List<TicketListResponse> tickets = ticketService.getTicketList(sortBy);
         return ResponseEntity.ok(TicketListResponse.of("Success", tickets));
     }*/
-
+    @GetMapping("/tickets/list")
+    public ResponseEntity<ConcertListResponse> getTicketList(
+            @RequestParam(value = "sortBy", required = false, defaultValue = "random") String sortBy) {
+        List<ConcertResponse> tickets = ticketService.getTicketList(sortBy);
+        return ResponseEntity.ok(ConcertListResponse.of("Success", tickets));
+    }
 
     @PatchMapping("/tickets/like/{ticket_id}")
     public ResponseEntity<TicketLikeResponse> likeTicket(@PathVariable("ticket_id") Long ticketId) {

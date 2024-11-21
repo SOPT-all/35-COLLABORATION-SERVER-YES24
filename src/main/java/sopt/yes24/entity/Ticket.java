@@ -30,6 +30,12 @@ public class Ticket {
     private int numberOfLikes;
 
     @Column
+    private int numberOfReviews;
+
+    @Column
+    private double rating;
+
+    @Column
     private boolean likeStatus;
 
     @Column(name = "duration", length = 50)
@@ -57,7 +63,7 @@ public class Ticket {
 
     }
 
-    public Ticket(Long ticketId, String title, String area, Date date, String img, String comment, int numberOfLikes, boolean likeStatus) {
+    public Ticket(Long ticketId, String title, String area, Date date, String img, String comment, int numberOfLikes, int numberOfReviews, double rating, boolean likeStatus) {
         this.ticketId = ticketId;
         this.title = title;
         this.area = area;
@@ -65,6 +71,8 @@ public class Ticket {
         this.img = img;
         this.comment = comment;
         this.numberOfLikes = numberOfLikes;
+        this.numberOfReviews = numberOfReviews;
+        this.rating = rating;
         this.likeStatus = likeStatus;
     }
 
@@ -94,6 +102,14 @@ public class Ticket {
 
     public int getNumberOfLikes() {
         return numberOfLikes;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public int getNumberOfReviews() {
+        return numberOfReviews;
     }
 
     public boolean isLikeStatus() {
