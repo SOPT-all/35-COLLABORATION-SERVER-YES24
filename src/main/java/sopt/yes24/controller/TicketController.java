@@ -1,10 +1,7 @@
 package sopt.yes24.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.service.TicketService;
@@ -38,7 +35,7 @@ public class TicketController {
     public ResponseEntity<MainTicketListResponse> getMainTickets() {
         List<MainTicketResponse> tickets = ticketService.getMainTickets();
         return ResponseEntity.ok(MainTicketListResponse.of("Success", tickets));
-    }
+    }*/
 
     @GetMapping("/tickets/ranked")
     public ResponseEntity<RankedTicketListResponse> getRankedTickets() {
@@ -46,7 +43,7 @@ public class TicketController {
         return ResponseEntity.ok(RankedTicketListResponse.of("Success", tickets));
     }
 
-    @GetMapping("/tickets/list")
+/*    @GetMapping("/tickets/list")
     public ResponseEntity<TicketListResponse> getTicketList(@RequestParam String sortBy) {
         List<TicketListResponse> tickets = ticketService.getTicketList(sortBy);
         return ResponseEntity.ok(TicketListResponse.of("Success", tickets));
