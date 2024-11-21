@@ -6,12 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sopt.yes24.dto.response.HotTicketListResponse;
-import sopt.yes24.dto.response.HotTicketResponse;
-import sopt.yes24.dto.response.MainTicketResponse;
-import sopt.yes24.dto.response.TicketDetailsResponse;
+import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
-import sopt.yes24.dto.response.TicketListResponse;
 import sopt.yes24.service.TicketService;
 
 import java.util.List;
