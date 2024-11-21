@@ -2,11 +2,12 @@ package sopt.yes24.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
+import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
 import sopt.yes24.service.TicketService;
 
 import java.util.List;
@@ -53,9 +54,9 @@ public class TicketController {
     }*/
 
 
-    @PostMapping("/tickets/like/{ticket_id}")
-    public ResponseEntity<Void> likeTicket(@PathVariable("ticket_id") Long ticketId) {
-        ticketService.likeTicket(ticketId);
-        return ResponseEntity.ok().build();
+    @PatchMapping("/tickets/like/{ticket_id}")
+    public ResponseEntity<TicketLikeResponse> likeTicket(@PathVariable("ticket_id") Long ticketId) {
+        TicketLikeData ticketLikeData = ticketService.likeTicket(ticketId);
+        return ResponseEntity.ok(TicketLikeResponse.of("Success", ticketLikeData));  
     }
 }

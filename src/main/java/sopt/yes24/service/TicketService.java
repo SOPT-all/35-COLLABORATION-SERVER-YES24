@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketPricing;
+import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
 import sopt.yes24.entity.Performance;
 import sopt.yes24.entity.Ticket;
 import sopt.yes24.repository.TicketRepository;
@@ -70,7 +71,17 @@ public class TicketService implements TicketServiceIF {
     }
 
     @Override
-    public void likeTicket(Long ticketId) {
-
+    public TicketLikeData likeTicket(Long ticketId) {
+        Ticket ticket = ticketRepository.findById(ticketId)
+                .orElseThrow(() -> new RuntimeException("Ticket not found"));
+        if (ticket.isLikeStatus()) {
+            ticket.setLikeStatus(false);
+            ticket.setNumberOfLikes(ticket.getNumberOfLikes() - 1);
+        } else {
+            ticket.setLikeStatus(true);
+            ticket.setNumberOfLikes(ticket.getNumberOfLikes() + 1);
+        }
+        ticketRepository.save(ticket);
+        return TicketLikeData.fromEntity(ticket);
     }
 }
