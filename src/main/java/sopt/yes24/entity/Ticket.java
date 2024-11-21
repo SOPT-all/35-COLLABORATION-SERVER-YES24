@@ -18,9 +18,6 @@ public class Ticket {
     private String area;
 
     @Column
-    private String areaDetail;
-
-    @Column
     private Date date;
 
     @Column
@@ -53,6 +50,9 @@ public class Ticket {
     @Column(name = "ticket_pricing", length = 255)
     private String ticketPricing;
 
+    @Column(name = "period", length = 50)
+    private String period;
+
     public Ticket() {
 
     }
@@ -78,10 +78,6 @@ public class Ticket {
 
     public String getArea() {
         return area;
-    }
-
-    public String getAreaDetail() {
-        return areaDetail;
     }
 
     public Date getDate() {
@@ -131,5 +127,9 @@ public class Ticket {
      */
     public String getTicketPricing() {
         return ticketPricing;
+    }
+
+    public String getPeriod() {
+        return period;
     }
 }

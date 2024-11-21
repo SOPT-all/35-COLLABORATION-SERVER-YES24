@@ -3,6 +3,7 @@ package sopt.yes24.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "performances")
@@ -17,13 +18,13 @@ public class Performance {
     private Ticket ticket;
 
     @Column(name = "viewing_time")
-    private LocalDate viewingTime;
+    private LocalDateTime viewingTime;
 
     public Performance() {
 
     }
 
-    public Performance(Long performId, Ticket ticket, String audienceRating, LocalDate viewingTime) {
+    public Performance(Long performId, Ticket ticket, String audienceRating, LocalDateTime viewingTime) {
         this.performId = performId;
         this.ticket = ticket;
         this.viewingTime = viewingTime;
@@ -37,7 +38,7 @@ public class Performance {
         return ticket;
     }
 
-    public LocalDate getViewingTime() {
+    public LocalDateTime getViewingTime() {
         return viewingTime;
     }
 }
