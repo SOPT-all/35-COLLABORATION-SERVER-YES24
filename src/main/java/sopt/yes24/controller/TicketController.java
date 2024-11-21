@@ -34,14 +34,14 @@ public class TicketController {
     }
 
 
-/*    //todo 내가 틀만 만들어 놔썽!
+    //todo 내가 틀만 만들어 놔썽!
     @GetMapping("/tickets/main")
     public ResponseEntity<MainTicketListResponse> getMainTickets() {
         List<MainTicketResponse> tickets = ticketService.getMainTickets();
         return ResponseEntity.ok(MainTicketListResponse.of("Success", tickets));
     }
 
-    @GetMapping("/tickets/ranked")
+/*    @GetMapping("/tickets/ranked")
     public ResponseEntity<RankedTicketListResponse> getRankedTickets() {
         List<RankedTicketResponse> tickets = ticketService.getRankedTickets();
         return ResponseEntity.ok(RankedTicketListResponse.of("Success", tickets));

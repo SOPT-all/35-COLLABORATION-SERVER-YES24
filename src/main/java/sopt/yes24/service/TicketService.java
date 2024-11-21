@@ -56,7 +56,10 @@ public class TicketService implements TicketServiceIF {
 
     @Override
     public List<MainTicketResponse> getMainTickets() {
-        return List.of();
+        return ticketRepository.findByCommentIsNullAndAreaIsNotNull()
+                .stream()
+                .map(MainTicketResponse::fromEntity)
+                .collect(Collectors.toList());
     }
 
     @Override
