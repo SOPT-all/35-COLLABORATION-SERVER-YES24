@@ -1,10 +1,7 @@
 package sopt.yes24.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
@@ -34,8 +31,8 @@ public class TicketController {
     }
 
 
-/*    //todo 내가 틀만 만들어 놔썽!
-    @GetMapping("/tickets/main")
+    //todo 내가 틀만 만들어 놔썽!
+/*    @GetMapping("/tickets/main")
     public ResponseEntity<MainTicketListResponse> getMainTickets() {
         List<MainTicketResponse> tickets = ticketService.getMainTickets();
         return ResponseEntity.ok(MainTicketListResponse.of("Success", tickets));
@@ -45,13 +42,15 @@ public class TicketController {
     public ResponseEntity<RankedTicketListResponse> getRankedTickets() {
         List<RankedTicketResponse> tickets = ticketService.getRankedTickets();
         return ResponseEntity.ok(RankedTicketListResponse.of("Success", tickets));
-    }
+    }*/
 
     @GetMapping("/tickets/list")
-    public ResponseEntity<TicketListResponse> getTicketList(@RequestParam String sortBy) {
-        List<TicketListResponse> tickets = ticketService.getTicketList(sortBy);
-        return ResponseEntity.ok(TicketListResponse.of("Success", tickets));
-    }*/
+    public ResponseEntity<ConcertListResponse> getTicketList(
+            @RequestParam(value = "sortBy", required = false, defaultValue = "random") String sortBy) {
+        List<ConcertResponse> tickets = ticketService.getTicketList(sortBy);
+        return ResponseEntity.ok(ConcertListResponse.of("Success", tickets));
+    }
+
 
 
     @PatchMapping("/tickets/like/{ticket_id}")

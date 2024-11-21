@@ -11,6 +11,7 @@ import sopt.yes24.repository.TicketRepository;
 import sopt.yes24.repository.PerformanceRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,8 +67,32 @@ public class TicketService implements TicketServiceIF {
     }
 
     @Override
-    public List<TicketListResponse> getTicketList(String sortBy) {
-        return List.of();
+    public List<ConcertResponse> getTicketList(String sortBy) {
+        List<Ticket> tickets;
+
+        switch (sortBy) {
+            case "popular":
+                tickets = ticketRepository.findAllByOrderByNumberOfLikesDesc();
+                break;
+            case "rating":
+                tickets = ticketRepository.findAllByOrderByRatingDesc();
+                break;
+            case "reviews":
+                tickets = ticketRepository.findAllByOrderByNumberOfReviewsDesc();
+                break;
+            case "ending":
+                tickets = ticketRepository.findAllByOrderByDateAsc();
+                break;
+            case "random":
+            default:
+                tickets = ticketRepository.findByCommentIsNullAndAreaIsNotNull();
+                Collections.shuffle(tickets);
+                break;
+        }
+
+        return tickets.stream()
+                .map(ConcertResponse::fromEntity)
+                .collect(Collectors.toList());
     }
 
     @Override
