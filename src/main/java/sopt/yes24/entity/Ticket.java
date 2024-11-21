@@ -132,4 +132,12 @@ public class Ticket {
     public String getPeriod() {
         return period;
     }
+
+    public void setLikeStatus(boolean likeStatus) {
+        this.likeStatus = likeStatus;
+    }
+
+    public void setNumberOfLikes(int i) {
+        this.numberOfLikes = i;
+    }
 }
