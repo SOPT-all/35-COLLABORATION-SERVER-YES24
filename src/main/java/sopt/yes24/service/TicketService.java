@@ -65,7 +65,11 @@ public class TicketService implements TicketServiceIF {
 
     @Override
     public List<RankedTicketResponse> getRankedTickets() {
-        return List.of();
+        List<Ticket> rankTickets = ticketRepository.findTop10ConcertTicketsByLikes();
+
+        return rankTickets.stream()
+                .map(ticket -> RankedTicketResponse.fromEntity(ticket, rankTickets.indexOf(ticket) + 1))
+                .collect(Collectors.toList());
     }
 
     @Override
