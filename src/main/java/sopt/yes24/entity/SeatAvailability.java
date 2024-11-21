@@ -12,7 +12,7 @@ public class SeatAvailability {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "perform_id", nullable = false)
-    private Performances performances;
+    private Performance performance;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ticket_id", nullable = false)
@@ -30,9 +30,9 @@ public class SeatAvailability {
     public SeatAvailability() {
     }
 
-    public SeatAvailability(Long seatId, Performances performances, Ticket ticket, String seatType, Integer totalSeats, String seatsPrice) {
+    public SeatAvailability(Long seatId, Performance performance, Ticket ticket, String seatType, Integer totalSeats, String seatsPrice) {
         this.seatId = seatId;
-        this.performances = performances;
+        this.performance = performance;
         this.ticket = ticket;
         this.seatType = seatType;
         this.totalSeats = totalSeats;
@@ -44,8 +44,8 @@ public class SeatAvailability {
         return seatId;
     }
 
-    public Performances getPerformances() {
-        return performances;
+    public Performance getPerformances() {
+        return performance;
     }
 
     public Ticket getTicket() {

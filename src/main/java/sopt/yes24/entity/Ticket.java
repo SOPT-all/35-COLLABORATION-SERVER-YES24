@@ -17,6 +17,9 @@ public class Ticket {
     private String area;
 
     @Column
+    private String area_detail;
+
+    @Column
     private Date date;
 
     @Column
@@ -30,6 +33,24 @@ public class Ticket {
 
     @Column
     private boolean like_status;
+
+    @Column(name = "duration", length = 50)
+    private String duration;
+
+    @Column(name = "audience_rating", length = 50)
+    private String audience_rating;
+
+    @Column(name = "notice", length = 255)
+    private String notice;
+
+    @Column(name = "hypertext", length = 255)
+    private String hypertext;
+
+    @Column(name = "hyperlink", length = 255)
+    private String hyperlink;
+
+    @Column(name = "ticket_pricing", length = 255)
+    private String ticket_pricing; 
 
     public Ticket() {
 
@@ -58,6 +79,10 @@ public class Ticket {
         return area;
     }
 
+    public String getArea_detail() {
+        return area_detail;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -74,7 +99,35 @@ public class Ticket {
         return number_of_likes;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public String getAudience_rating() {
+        return audience_rating;
+    }
+
+    public String getNotice() {
+        return notice;
+    }
+
     public boolean getLike_status() {
         return like_status;
+    }
+    public String getHyperlink() {
+        return hyperlink;
+    }
+
+    public String getHypertext() {
+        return hypertext;
+    }
+
+    /*
+     * R석 88,000원
+     * S석 77,000원
+     * A석 66,000원
+     */
+    public String getTicket_pricing() {
+        return ticket_pricing;
     }
 }
