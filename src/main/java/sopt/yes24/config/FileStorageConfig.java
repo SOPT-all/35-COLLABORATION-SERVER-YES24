@@ -19,9 +19,9 @@ public class FileStorageConfig {
         Path path = Paths.get(uploadDir);
         if (!Files.exists(path)) {
             try {
-                Files.createDirectories(path); // 디렉토리 생성
+                Files.createDirectories(path);
             } catch (IOException e) {
-                throw new RuntimeException("Could not create upload directory!", e);
+                throw new RuntimeException("사진 업로드 불가능!", e);
             }
         }
         return path;

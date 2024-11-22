@@ -39,7 +39,6 @@ public class SeatAvailability {
         this.seatsPrice = seatsPrice;
     }
 
-    // Getter
     public Long getSeatId() {
         return seatId;
     }

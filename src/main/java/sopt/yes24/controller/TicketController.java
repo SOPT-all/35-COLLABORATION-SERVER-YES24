@@ -75,9 +75,9 @@ public class TicketController {
         try {
             // Ticket 이미지 처리 및 저장
             String fileUrl = ticketService.saveTicketImg(file, serverUrl);
-            return ResponseEntity.ok("Ticket image uploaded successfully: " + fileUrl);
+            return ResponseEntity.ok("티켓 이미지 업로드 성공: " + fileUrl);
         } catch (IOException e) {
-            return ResponseEntity.status(500).body("Ticket image upload failed: " + e.getMessage());
+            return ResponseEntity.status(500).body("티켓 이미지 업로드 실패: " + e.getMessage());
         }
     }
 }

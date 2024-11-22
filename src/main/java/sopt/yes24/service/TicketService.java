@@ -6,7 +6,6 @@ import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketPricing;
 import sopt.yes24.dto.response.TicketLikeResponse.TicketLikeData;
-import sopt.yes24.entity.Ads;
 import sopt.yes24.entity.Performance;
 import sopt.yes24.entity.Ticket;
 import sopt.yes24.repository.TicketRepository;
@@ -123,10 +122,8 @@ public class TicketService implements TicketServiceIF {
     }
 
     public String saveTicketImg(MultipartFile file, String serverUrl) throws IOException {
-        // 파일 저장 및 URL 생성
         String fileUrl = fileStorageService.storeFile(file);
 
-        // Ticket 엔티티 생성 및 저장
         Ticket ticket = new Ticket();
         ticket.setImg(serverUrl + fileUrl);
         ticketRepository.save(ticket);

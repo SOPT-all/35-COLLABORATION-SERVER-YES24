@@ -20,22 +20,22 @@ public class Ticket {
     @Column
     private Date date;
 
-    @Column
+    @Column(length = 500)
     private String img;
 
     @Column
     private String comment;
 
-    @Column
+    @Column(name = "number_of_likes")
     private int numberOfLikes;
 
-    @Column
+    @Column(name = "number_of_reviews")
     private int numberOfReviews;
 
     @Column
     private double rating;
 
-    @Column
+    @Column(name = "like_status")
     private boolean likeStatus;
 
     @Column(name = "duration", length = 50)
