@@ -111,6 +111,7 @@ public class TicketService implements TicketServiceIF {
         }
 
         return tickets.stream()
+                .filter(ticket -> ticket.getComment() == null)
                 .map(ConcertResponse::fromEntity)
                 .collect(Collectors.toList());
     }
