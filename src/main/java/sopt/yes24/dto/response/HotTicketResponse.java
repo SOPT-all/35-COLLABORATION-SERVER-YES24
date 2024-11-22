@@ -11,7 +11,7 @@ public record HotTicketResponse (
         String img_url
 ){
     public static HotTicketResponse fromEntity(Ticket ticket) {
-        String formattedDate = ticket.getDate().toString();
+        String formattedDate = ticket.getPeriod();
 
         return new HotTicketResponse(
                 ticket.getTicketId(),

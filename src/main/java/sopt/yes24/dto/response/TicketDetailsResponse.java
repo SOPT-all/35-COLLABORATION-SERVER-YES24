@@ -29,7 +29,7 @@ public record TicketDetailsResponse(
                     ticket.getTitle(),
                     ticket.getArea(),
                     ticket.getImg(),
-                    ticket.getDate().toString(),
+                    ticket.getPeriod(),
                     ticket.getDuration(),
                     ticket.getAudienceRating(),
                     ticket.getHypertext(),
