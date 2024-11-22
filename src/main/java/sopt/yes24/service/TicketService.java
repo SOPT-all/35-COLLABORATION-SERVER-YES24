@@ -40,7 +40,14 @@ public class TicketService implements TicketServiceIF {
     public TicketDetails getTicketDetails(Long ticketId) {
         List<Performance> performances = performanceRepository.findByTicket_TicketId(ticketId);
         List<String> performanceTimes = performances.stream()
-                .map(performance -> performance.getViewingTime().toString())
+                .map(performance -> {
+                    // 1. ViewingTime 객체 가져오기
+                    LocalDateTime viewingTime = performance.getViewingTime();
+                    // 2. 포맷 설정
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd (E) HH:mm");
+                    // 3. 문자열 포맷팅
+                    return viewingTime.format(formatter);
+                })
                 .sorted()
                 .collect(Collectors.toList());
         Ticket ticket = ticketRepository.findById(ticketId)
