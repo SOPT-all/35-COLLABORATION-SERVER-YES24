@@ -10,16 +10,4 @@ public record HotTicketResponse (
         String comment,
         String img_url
 ){
-    public static HotTicketResponse fromEntity(Ticket ticket) {
-        String formattedDate = ticket.getPeriod();
-
-        return new HotTicketResponse(
-                ticket.getTicketId(),
-                ticket.getTitle(),
-                ticket.getArea(), 
-                formattedDate,
-                ticket.getComment(),
-                ticket.getImg()
-        );
-    }
 }

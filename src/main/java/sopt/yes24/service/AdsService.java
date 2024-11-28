@@ -2,6 +2,7 @@ package sopt.yes24.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import sopt.yes24.dto.Mapper;
 import sopt.yes24.dto.response.AdsResponse;
 import sopt.yes24.entity.Ads;
 import sopt.yes24.repository.AdsRepository;
@@ -23,7 +24,7 @@ public class AdsService {
     public List<AdsResponse> getAdsImgList() {
         return adsRepository.findAll()
                 .stream()
-                .map(AdsResponse::fromEntity)
+                .map(Mapper::toAdsResponse)
                 .collect(Collectors.toList());
     }
 

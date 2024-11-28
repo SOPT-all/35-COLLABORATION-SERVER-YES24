@@ -2,6 +2,7 @@ package sopt.yes24.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import sopt.yes24.dto.Mapper;
 import sopt.yes24.dto.response.*;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketDetails;
 import sopt.yes24.dto.response.TicketDetailsResponse.TicketPricing;
@@ -34,7 +35,7 @@ public class TicketService implements TicketServiceIF {
     public List<HotTicketResponse> getHotTickets() {
         return ticketRepository.findByCommentIsNotNull()
                 .stream()
-                .map(HotTicketResponse::fromEntity)
+                .map(Mapper::toHotTicketResponse)
                 .collect(Collectors.toList());
     }
 
@@ -73,7 +74,7 @@ public class TicketService implements TicketServiceIF {
     public List<MainTicketResponse> getMainTickets() {
         return ticketRepository.findByCommentIsNullAndAreaIsNotNull()
                 .stream()
-                .map(MainTicketResponse::fromEntity)
+                .map(Mapper::toMainTicketResponse)
                 .collect(Collectors.toList());
     }
 
@@ -112,7 +113,7 @@ public class TicketService implements TicketServiceIF {
 
         return tickets.stream()
                 .filter(ticket -> ticket.getComment() == null)
-                .map(ConcertResponse::fromEntity)
+                .map(Mapper::toConcertResponse)
                 .collect(Collectors.toList());
     }
 
